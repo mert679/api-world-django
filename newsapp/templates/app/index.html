@@ -1,0 +1,59 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/style.css'%}">
+    <title>News app</title>
+</head>
+<body>
+    <header>
+            <div class="input-container">
+                <form class="input-content" method="get">
+                    {% csrf_token %}
+                    <input type="text" name="country" placeholder="Country Code">
+                    <button type="submit">Search</button>
+                </form>
+                <form class="input-content" method="get">
+                    {% csrf_token %}
+                    <input type="text" name="category" placeholder="Category">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+    </header>
+
+    <main>
+        <div class="cat-container">
+            <div class="cat-content">
+                <ul class="list-group">
+                    <li class="list-group-item"><a class="btn" href="{% url 'home' %}?category=technology">Technology</a></li>
+                    <li class="list-group-item"><a class="btn" href="{% url 'home' %}?category=health">Health</a></li>
+                    <li class="list-group-item"><a class="btn" href="{% url 'home' %}?category=Entertainment">Entertainment</a></li>
+                    <li class="list-group-item"><a class="btn" href="{% url 'home' %}?category=Sports">Sports</a></li>
+                    <li class="list-group-item"><a class="btn" href="{% url 'home' %}?category=Science">Science</a></li>
+                    <li class="list-group-item"><a class="btn" href="{% url 'home' %}?category=Business">Business</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+    <main>
+        <div class="news-container">
+            <div class="news-content">
+                {%for i in articles%} 
+                <img src="{{i.urlToImage}}">
+               <span class="card-author">Author:</span> <div>{{i.author}}</div>
+               <span class="card-title">Title:</span><div >{{i.title}}</div>
+               <span class="card-description">Description: </span><div >{{i.description}}</div>
+                <a href="{{ i.url }}" class="detail">See Details</a>
+                {%endfor%}
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

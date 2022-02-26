@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.nav-container{
+    border: 1px solid black;
+    padding: 35px;
+}
+.nav-content{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;
+    
+}
+a{
+    text-decoration: none;
+    
+    border-radius: 8px;
+    color: black;
+    padding: 6px 12px;
+    margin-left:40px ;
+}
+a:hover{
+    padding: 6px 12px;
+    background-color: rgb(255, 225, 185);
+}
+.img-container{
+    width: 100%;
+    height: 100%;
+}
+.img-container>img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}

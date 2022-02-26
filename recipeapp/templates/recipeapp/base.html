@@ -1,0 +1,45 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'recipeapp/style.css'%}">
+    <title>Recipe app</title>
+</head>
+<body>
+    <header>
+            <div class="input-container">
+                <form class="input-content" method="get">
+                    {% csrf_token %}
+                    <input type="text" name="mealname" placeholder="Meal name">
+                    <button type="submit">Search</button>
+                </form>
+                <form class="input-content" method="get">
+                    {% csrf_token %}
+                    <input type="text" name="category" placeholder="Category">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+    </header>
+
+    
+    <main>
+        <div class="news-container">
+            <div class="news-content">
+                {%for i in meals%} 
+                <img src="{{i.strMealThumb}}">
+               <span class="card-author">Country:</span> <div>{{i.strArea}}</div>
+               <span class="card-title">Title:</span><div >{{i.strMeal}}</div>
+               <span class="card-description">Description: </span><div >{{i.strInstructions}}</div>
+                <a href="{{ i.strYoutube }}" class="detail">See Details</a>
+                {%endfor%}
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

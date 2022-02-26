@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'weatherstyle/style.css'%}">
+    <title>Weather app</title>
+</head>
+<body>
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="city" id="Search" placeholder="Search City">
+            <input type="submit" value="Search" class="btn">
+            <div class="content-container">
+                <div class="content">
+                    {%if country and city and temp and description and humidity %}
+                    <h3>country:</h3><span>{{country}}</span>
+                    <h3>city:</h3> <span>{{city}}</span>
+                    <h3>temp:</h3> <span>{{temp}}</span>
+                    <h3>description:</h3> <span>{{description}}</span>
+                    <h3>humidity:</h3> <span>{{humidity}}</span>
+                    <img src='http://openweathermap.org/img/w/{{icon}}.png' alt='image' style='width:70px;'>
+
+                    {%endif%}
+                </div>
+            </div>
+        </form>
+    </div> 
+</body>
+</html>
